@@ -21,7 +21,7 @@ const apiDogs = async (req, res) => {
     return DogsInfo
     //return res.status(200).send(DogsInfo);
   } catch (error) {
-    return error; //return res.status(404).send('Not found'); // console.error(error);
+    return error;
   }
 };
 
@@ -71,28 +71,29 @@ const getById = async (req, res) => {
 
 const getAllTempers = async (req, res) => {
   const dataApi = await apiDogs();
-//  const onlyTempers = dataApi.map(tem => tem.tempers).map(t => t && t.split(',')).flat();
-  const onlyTempers = [...new Set(dataApi.map(tem => tem.tempers).map(t => t && t.split(', ')).flat())]  
+  const tempersArr = [...new Set(dataApi.map(tem => tem.tempers).map(t => t && t.split(', ')).flat())].sort()
 
- //const onlyTempers = dataApi.map(tem => tem.tempers).map(t => t && t.split(', '))
- console.log(onlyTempers.length)    
+  tempersArr.pop()
+  tempersArr.forEach(t => {Temper.findOrCreate({
+      where: {
+        name: t
+      }
+    })
+  })
+  const allTempers = await Temper.findAll();
+  return res.send(allTempers);  //125
 
-  //console.log(onlyTempers.length)  //164
- // return res.send(onlyTempers);  //friendly
-
-  // const cad = ['Stubborn,  Playful' , 'Aloof, Clownish']
-  // const divisiones = cad.map(t=>t.split(","));
-  // console.log(divisiones)  //164  125
 };
 
-
+// const cad = ['Stubborn,  Playful' , 'Aloof, Clownish']
+// const divisiones = cad.map(t=>t.split(","));
+// console.log(divisiones)  //125
 
 
 const createDog = async (req, res) => {
   const { name, life, image, weight, height, temperament } = req.body;
   const newDog = await Dog.create({ name, life, image, weight, height });
   const temperDb = await Temper.findAll({ where: { name: temperament } });
-  //console.log('genderDb', genderDb)
   newDog.addTemper(temperDb);
   res.json({ data: newDog, msg: 'Successful create' });
 };
