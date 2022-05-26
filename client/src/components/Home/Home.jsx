@@ -138,7 +138,6 @@ export default function HomePage() {
                                                 tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
                                                 weight={d.weight}
                                                 height={d.height}
-                                              
                                             />
                                         </Link>
                                     </div>

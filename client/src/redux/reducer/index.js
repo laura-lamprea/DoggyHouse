@@ -86,11 +86,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 dogs: filteredByTempers.length ? filteredByTempers : [{ Error: 'No videodogs found' }]
             }
-        // case 'CLEAN_DETAILS':
-        //     return {
-        //         ...state,
-        //         dog: {}
-        //     }
+        case 'CLEAN_DETAILS':
+            return {
+                ...state,
+                dog: {}
+            }
 
         default:
             return { ...state }
