@@ -1,0 +1,19 @@
+.pagination {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin-top: 10px;
+    padding-bottom: 30px;
+    background-color: #18d11e;
+  
+  }
+
+  .cards {
+    background-color: #6e6ec4;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    padding: 20px 3% 223px 5%;
+  }

@@ -1,0 +1,19 @@
+.btnPg {
+    background-color: #060609;
+    color: #767676;
+    border-radius: none;
+    padding: 5px 12px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin: 1px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .btnPg:hover {
+    background-color: #ddd;
+    color: #060609;
+  }
+  
+  .btnPg::after {
+    background-color: red
+  }
