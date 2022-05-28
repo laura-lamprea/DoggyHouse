@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/Landing/Landing'
 import Home from './components/Home/Home'
 import DetailPage from './components/Details/Details'
-// import CreateGame from './components/Create/Create'
+import CreateDog from './components/Create/Create'
 // import AboutPage from './components/About/About'
 // import NotFound from './components/Notfound/NotFound'
 
@@ -17,9 +17,9 @@ function App() {
           <Route path='/home'>
             <Home/>
           </Route>
-          {/* <Route path='/create'>
-            <CreateGame />
-          </Route> */}
+          <Route path='/create'>
+            <CreateDog />
+          </Route>
           <Route path='/details/:id'>
             <DetailPage/>
           </Route>

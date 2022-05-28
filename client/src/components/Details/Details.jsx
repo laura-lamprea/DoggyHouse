@@ -21,7 +21,7 @@ export default function DetailPage() {
     return (
         <div  >
             {
-                dog && dog.name?
+                dog.id?
                     <>
                         <div className={D.containerLeft}>
                             <Link to='/home'>
@@ -37,7 +37,8 @@ export default function DetailPage() {
                             </div>
                         </div>
                     </>
-                    : <h3>LOADING.... </h3>
+                    : <h3>LOADING.... </h3> 
+                    
                 // <img className={D.gif} src={gif}  alt="Not found" />
                 // {dog.tempers?.map(g => <a className={D.item} >{g}</a>)} 
 

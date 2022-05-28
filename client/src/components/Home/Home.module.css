@@ -1,19 +1,27 @@
-.pagination {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    margin-top: 10px;
-    padding-bottom: 30px;
-    background-color: #18d11e;
-  
-  }
+.container {
 
-  .cards {
-    background-color: #6e6ec4;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    padding: 20px 3% 223px 5%;
-  }
+}
+
+.container2 {
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: 0px 1% 77px 1%;
+}

@@ -7,7 +7,6 @@ import Card from '../Card/Card'
 //import Navbar from '../Navbar/Navbar'
 import H from './Home.module.css';
 // import gif from "../../components/gif.gif";
-
 import Pagination from "../Pagination/Pagination"
 
 
@@ -17,7 +16,7 @@ export default function HomePage() {
     const tempers = useSelector(state => state.tempers)
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [perPage, setPerPage] = useState(15)
+    const [perPage, setPerPage] = useState(8)
     const indexLast = currentPage * perPage
     const indexFirst = indexLast - perPage
     const current = allDogs.slice(indexFirst, indexLast)
@@ -79,7 +78,10 @@ export default function HomePage() {
         <div className={H.container}>
             {/* <Navbar /> */}
             <div className={H.container2}>
-                <div className={H.searchBar}>
+               
+                    <Link to={`/create`}  >
+                        <button className={H.btnAll}>CREATE</button>
+                    </Link>
                     <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Reload Dogs</button>
                     <div className={H.filters} >
                         <select id="nameSelect" onChange={(e) => orderAlfaHdl(e)}>
@@ -110,12 +112,11 @@ export default function HomePage() {
                         <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder=" Search dog..." onChange={(e) => handleInputChange(e)} />
                         <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}>BUSCAR</button>
                     </div>
-                </div>
+             
             </div>
 
-
+            <hr></hr>
             <div className={H.pagination}>
-                <h3>DOS</h3>
                 <Pagination
                     perPage={perPage}
                     allDogs={allDogs.length}
@@ -130,17 +131,19 @@ export default function HomePage() {
                             return (
                                 // g.Error ? <img className={H.error} src={notFound} alt="Not found" /> :
                                 d.Error ? <h3>Not found</h3> :
-                                    <div key={d.id}>
+                                    // <div>
                                         <Link to={`/details/${d.id}`} style={{ textDecoration: 'none' }} >
                                             <Card name={d.name}
                                                 id={d.id}
                                                 image={d.image}
                                                 tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
                                                 weight={d.weight}
+
+                                                life={d.life}
                                                 height={d.height}
                                             />
                                         </Link>
-                                    </div>
+                                    //</div>
                             );
                         })
                         : <h3>LOADING</h3>

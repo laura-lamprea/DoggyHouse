@@ -22,9 +22,10 @@ export function getDogName(name) {
 }
 
 export function createDog(payload) {
+    console.log('ESTE ES EL PAYLOAD DEL ACTION', payload)
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/dogs', payload);
-        return response;
+        const response = await axios.post('http://localhost:3001/dogs', payload); 
+        return response;  
     }
 }
 

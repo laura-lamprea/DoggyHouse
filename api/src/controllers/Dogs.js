@@ -93,8 +93,8 @@ const getAllTempers = async (req, res) => {
 const createDog = async (req, res) => {
   const { name, life, image, weight, height, temperament } = req.body;
   const newDog = await Dog.create({ name, life, image, weight, height });
-  const temperDb = await Temper.findAll({ where: { name: temperament } });
-  newDog.addTemper(temperDb);
+  //const temperDb = await Temper.findAll({ where: { name: temperament } });
+  //newDog.addTemper(temperDb);
   res.json({ data: newDog, msg: 'Successful create' });
 };
 
