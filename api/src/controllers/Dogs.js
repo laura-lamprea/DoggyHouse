@@ -17,7 +17,10 @@ const apiDogs = async (req, res) => {
         tempers: p.temperament,
       };
     });
-    //console.log(DogsInfo);
+    //const newWeigt = DogsInfo.map(w => w.weight.split(' - '))   //NaN   .replace('dog', 'monkey')
+    //const newWeigt = DogsInfo.map(w =>parseInt(w.weight.replace('NaN', 0).split(' - ').join(''))) //NaN   .replace('dog', 'monkey')
+    //newWeigt.map(m=>m && m.flat())
+    //console.log(newWeigt.sort((a, b) => (a > b ? 1 : a< b ? -1 : 0)));
     return DogsInfo
     //return res.status(200).send(DogsInfo);
   } catch (error) {

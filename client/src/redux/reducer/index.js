@@ -47,18 +47,37 @@ const rootReducer = (state = initialState, action) => {
 
         case 'ORDER_ALFA':
             const alldogs = state.dogs
+            
             const dogsOrderAlfa = action.payload === 'asc' ?
                 alldogs.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
                 : alldogs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
+                console.log(dogsOrderAlfa.map(p=>p.name))
             return {
                 ...state,
                 dogs: dogsOrderAlfa
             }
+
+
         case 'ORDER_WEIGHT':
             const dogsAll = state.dogs
             const dogOrderWeight = action.payload === 'asc' ?
-                dogsAll.sort((a, b) => (a.weight > b.weight ? 1 : a.weight < b.weight ? -1 : 0))
-                : dogsAll.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0))
+                dogsAll.sort((a, b) => {
+                    if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) > parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return 1;
+                    if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) < parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return -1;
+                    else return 0;
+                })
+                : dogsAll.sort((a, b) => {
+                    if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) > parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return -1;
+                    if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) < parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return 1;
+                    else return 0;
+                })
+
+            // console.log(dogsAll.map(weight => weight.weight))
+            // const dogOrderWeight = action.payload === 'asc' ?
+            //     dogsAll.sort((a, b) => (a.weight > b.weight ? 1 : a.weight < b.weight ? -1 : 0))
+            //     : dogsAll.sort((a, b) => (a.weight > b.weight ? -1 : a.weight < b.weight ? 1 : 0))
+            //     console.log(dogsAll.map(weight=>weight.weight))
+
             return {
                 ...state,
                 dogs: dogOrderWeight
@@ -67,7 +86,7 @@ const rootReducer = (state = initialState, action) => {
         case 'FILTER_CREATED':
             const dogs = state.dogscopy
             const dogFilteredCreated = action.payload === "created" ? dogs.filter(e => e.created_db) :
-            dogs.filter(e => !e.created_db)
+                dogs.filter(e => !e.created_db)
             return {
                 ...state,
                 dogs: action.payload === 'all' ? state.dogscopy

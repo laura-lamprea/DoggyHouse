@@ -40,11 +40,11 @@ export default function CreateDog() {
         }));
 
 
-        if (input.name &&
+        if (input.name && input.image &&
+            input.lifeMin && input.lifeMax &&
+            input.weightMin && input.weightMax &&
+            input.lifeMin && input.lifeMax
             // input.platforms.length &&
-            input.image &&
-            input.weight
-            //input.life
         ) {
             setBotonActivo(true)
         } else {
@@ -76,8 +76,10 @@ export default function CreateDog() {
                 ...input,
                 name: '',
                 image: '',
-                weight: '',
-                height: '',
+                weightMin: '',
+                weightMax: '',
+                heightMin:'',
+                heightMax:'',
                 life: '',
                 tempers: [],
             });
