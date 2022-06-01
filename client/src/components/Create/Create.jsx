@@ -14,8 +14,8 @@ export default function CreateDog() {
         weightMin: '',
         weightMax: '',
         height: '',
-        heightMin:'',
-        heightMax:'',
+        heightMin: '',
+        heightMax: '',
         lifeMin: '',
         lifeMax: '',
         life: '',
@@ -43,7 +43,7 @@ export default function CreateDog() {
         if (input.name && input.image &&
             input.lifeMin && input.lifeMax &&
             input.weightMin && input.weightMax &&
-            input.lifeMin && input.lifeMax
+            input.heightMin && input.heightMax
             // input.platforms.length &&
         ) {
             setBotonActivo(true)
@@ -61,7 +61,7 @@ export default function CreateDog() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('input', input)
+        
 
         // dispatch(createDog(input))
         // alert("DOG CREATED SUCCESSFULLY!!")
@@ -69,6 +69,10 @@ export default function CreateDog() {
         input.life = `${input.lifeMin} - ${input.lifeMax} years`
         input.weight = `${input.weightMin} - ${input.weightMax} `
         input.height = `${input.heightMin} - ${input.heightMax} `
+
+        console.log('input', input)
+
+
         if (Object.entries(errors).length === 0) {
             dispatch(createDog(input))
             alert("DOG CREATED SUCCESSFULLY!!")
@@ -78,8 +82,8 @@ export default function CreateDog() {
                 image: '',
                 weightMin: '',
                 weightMax: '',
-                heightMin:'',
-                heightMax:'',
+                heightMin: '',
+                heightMax: '',
                 life: '',
                 tempers: [],
             });
@@ -114,26 +118,28 @@ export default function CreateDog() {
                 <form onSubmit={handleSubmit}  >
                     <div className={C.formItem} >
                         <label >Name</label>
-                        <input type="text" value={input.name} name="name" placeholder="The name of dog..." onChange={handleInputChange}
+                        <input className={C.inputForm} type="text" value={input.name} name="name" placeholder="The name of dog..." onChange={handleInputChange}
                         />
                         {botonActivo && errors.name && (<h6 className={C.danger}> {errors.name}</h6>)}
                     </div>
 
                     <div className={C.formItem}>
                         <label>Image</label>
-                        <input type="text" value={input.image} name="image" placeholder="https://url-of-image-the-videogame.png" onChange={handleInputChange}
+                        <input className={C.inputForm} type="text" value={input.image} name="image" placeholder="https://url-of-image-the-videogame.png" onChange={handleInputChange}
                         />
                         {botonActivo && errors.image && (<h6 className={C.danger}> {errors.image}</h6>)}
                     </div>
 
                     <div className={C.formItem}>
                         <label>Life: </label>
-                        <input type="number" value={input.lifeMin} name="lifeMin" min={0} max={21} placeholder="min" onChange={handleInputChange} />
-                        {botonActivo && errors.lifeMin && (<h6 className={C.danger}> {errors.lifeMin} </h6>)}
-                        <label> - </label>
-                        <input type="number" value={input.lifeMax} name="lifeMax" min={1} max={22} placeholder="max" onChange={handleInputChange} />
-                        {botonActivo && errors.lifeMax && (<h6 className={C.danger}>{errors.lifeMax}</h6>)}
-                        <label> years </label>
+                        <div className={C.formItem2}>
+                            <input className={C.inputRange} type="number" value={input.lifeMin} name="lifeMin" min={0} max={21} placeholder="min" onChange={handleInputChange} />
+                            {botonActivo && errors.lifeMin && (<h6 className={C.danger}> {errors.lifeMin} </h6>)}
+                            <label> - </label>
+                            <input type="number" value={input.lifeMax} name="lifeMax" min={1} max={22} placeholder="max" onChange={handleInputChange} />
+                            {botonActivo && errors.lifeMax && (<h6 className={C.danger}>{errors.lifeMax}</h6>)}
+                            <label> years </label>
+                        </div>
                     </div>
 
                     <div className={C.formSlice}>
@@ -173,7 +179,7 @@ export default function CreateDog() {
                     </div>
 
                     <div className={C.btnsub} >
-                        <button type="submit" disabled={!botonActivo} className={C.btnAll} id="btn" >CREATE GAME</button>
+                        <button type="submit" disabled={!botonActivo} className={C.btnAll} id="btn" >CREATE DOG</button>
                     </div>
                 </form>
 
@@ -205,11 +211,11 @@ export function validate(input) {
     }
 
     if (!input.lifeMin) {
-        errors.lifeMin = 'Minimum value required!';
+        errors.lifeMin = 'Min value required!';
     } else if (parseInt(input.lifeMin) > parseInt(input.lifeMax)) {
-        errors.lifeMin = 'Minimum value is greater than maximum!';
+        errors.lifeMin = 'Min value is greater than max!';
     } else if (input.lifeMin == input.lifeMax) {
-        errors.lifeMin = 'Minimum value and maximum must not be equal!';
+        errors.lifeMin = 'Min value and max must not be equal!';
     } else if (parseInt(input.lifeMin) < 0) {
         errors.lifeMin = 'Not negative numbers';
     } else if (parseInt(input.lifeMin) > 21) {
@@ -221,7 +227,7 @@ export function validate(input) {
     }
 
     if (!input.lifeMax) {
-        errors.lifeMax = 'Maximum value required!';
+        errors.lifeMax = 'Max value required!';
     } else if (parseInt(input.lifeMax) < 1 || parseInt(input.lifeMax) > 22) {
         errors.lifeMax = 'Numbers less than 1 or greater than 22 are not allowed';
     } else if (/[$%&|<>#]/.test(input.lifeMax)) {
@@ -231,11 +237,11 @@ export function validate(input) {
     }
 
     if (!input.weightMin) {
-        errors.weightMin = 'Minimum value required!';
+        errors.weightMin = 'Min value required!';
     } else if (parseInt(input.weightMin) > parseInt(input.weightMax)) {
-        errors.weightMin = 'Minimum value is greater than maximum!';
+        errors.weightMin = 'Min value is greater than max!';
     } else if (input.weightMin == input.weightMax) {
-        errors.weightMin = 'Minimum value and maximum must not be equal!';
+        errors.weightMin = 'Min value and max must not be equal!';
     } else if (parseInt(input.weightMin) < 1 || parseInt(input.weightMin) > 99) {
         errors.weightMin = 'Value outside the range: 1-99';
     } else if (/[$%&|<>#]/.test(input.weightMin)) {
@@ -245,7 +251,7 @@ export function validate(input) {
     }
 
     if (!input.weightMax) {
-        errors.weightMax = 'Maximum value required!';
+        errors.weightMax = 'Max value required!';
     } else if (parseInt(input.weightMax) < 2 || parseInt(input.weightMax) > 100) {
         errors.weightMax = 'Value outside the range: 2-100';
     } else if (/[$%&|<>#]/.test(input.weightMax)) {
@@ -255,11 +261,11 @@ export function validate(input) {
     }
 
     if (!input.heightMin) {
-        errors.heightMin = 'Minimum value required!';
+        errors.heightMin = 'Min value required!';
     } else if (parseInt(input.heightMin) > parseInt(input.heightMax)) {
-        errors.heightMin = 'Minimum value is greater than maximum!';
+        errors.heightMin = 'Min value is greater than max!';
     } else if (input.heightMin == input.heightMax) {
-        errors.heightMin = 'Minimum value and maximum must not be equal!';
+        errors.heightMin = 'Min value and max must not be equal!';
     } else if (parseInt(input.heightMin) < 1 || parseInt(input.heightMin) > 99) {
         errors.heightMin = 'Value outside the range: 1-99';
     } else if (/[$%&|<>#]/.test(input.heightMin)) {
@@ -269,7 +275,7 @@ export function validate(input) {
     }
 
     if (!input.heightMax) {
-        errors.heightMax = 'Maximum value required!';
+        errors.heightMax = 'Max value required!';
     } else if (parseInt(input.heightMax) < 2 || parseInt(input.heightMax) > 100) {
         errors.heightMax = 'Value outside the range: 2-100';
     } else if (/[$%&|<>#]/.test(input.heightMax)) {

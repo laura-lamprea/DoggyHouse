@@ -1,3 +1,43 @@
-.imgNew{
+.container {
+    background-color: red;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.containerLeft {
+    background-color: blue;
+    width: 400px;
+    text-align: center;
+}
+
+.containerRight {
+    width: 600px;
+    background-color: pink;
+    padding: 20px;
+}
+
+.imgNew {
     height: 150px;
+}
+
+.inputForm {
+    margin: 4px 0 4px 0;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem2{
+    display: flex;
+    background-color: red;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.inputRange{
+width: 100px;
 }

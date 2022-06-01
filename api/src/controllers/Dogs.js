@@ -74,7 +74,6 @@ const getById = async (req, res) => {
 const getAllTempers = async (req, res) => {
   const dataApi = await apiDogs();
   const tempersArr = [...new Set(dataApi.map(tem => tem.tempers).map(t => t && t.split(', ')).flat())].sort()
-
   tempersArr.pop()
   tempersArr.forEach(t => {Temper.findOrCreate({
       where: {
@@ -83,20 +82,17 @@ const getAllTempers = async (req, res) => {
     })
   })
   const allTempers = await Temper.findAll();
-  return res.send(allTempers);  //125
-
+  return res.send(allTempers);  
 };
 
-// const cad = ['Stubborn,  Playful' , 'Aloof, Clownish']
-// const divisiones = cad.map(t=>t.split(","));
-// console.log(divisiones)  //125
+
 
 
 const createDog = async (req, res) => {
-  const { name, life, image, weight, height, temperament } = req.body;
+  const { name, life, image, weight, height, tempers } = req.body;
   const newDog = await Dog.create({ name, life, image, weight, height });
-  //const temperDb = await Temper.findAll({ where: { name: temperament } });
-  //newDog.addTemper(temperDb);
+  const temperDb = await Temper.findAll({ where: { name: tempers } });
+  newDog.addTemper(temperDb);
   res.json({ data: newDog, msg: 'Successful create' });
 };
 
@@ -106,7 +102,7 @@ const createDog = async (req, res) => {
   "life": "10 - 12 years",
   "weight": "3 - 6",
   "height":  "23 - 29",
-  "temperament": "Stubborn, Curious, Fun-loving"
+  "tempers": ["Stubborn", "Curious", "Fun-loving"]
 }
 */
 
