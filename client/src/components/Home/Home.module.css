@@ -1,11 +1,42 @@
 .container {
-
+  background-color: #302c33bd;
+  /* background-color: #0c0213bd;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png"); */
+  padding-bottom: 16%;
 }
 
-.container2 {
+.navbar {
   display: flex;
-  padding-top: 10px;
+  padding: 5px 0 5px 0;
+  margin-bottom: 30px;
+  align-items: center;
   justify-content: space-between;
+  background-color: #4b405a;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.navbarButtons {
+  display: flex;
+  width: 900px;
+  position: relative;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  margin-right: 10%;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Pompiere');
+
+select {
+  background-color: transparent;
+  font-family: Pompiere, cursive;
+  font-size: 21px;
+  color: rgb(248, 191, 230);
+  background-color: rgb(84, 84, 84, 0.8);
+  padding: 0 10px 0 0px;
 }
 
 .pagination {
@@ -23,5 +54,110 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  padding: 0px 1% 77px 1%;
+  padding: 0px 1% 0 2%;
+  margin-top: 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Codystar');
+
+.btnNav {
+  background-color: transparent;
+  color: rgb(250, 249, 249);
+  border: 1px solid rgb(197, 151, 159);
+  padding: 8px 13px 8px 13px;
+  border-radius: 15px;
+  /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-family: Codystar, cursive;
+  text-align: center;
+  font-size: 18px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+
+.btnNav:hover {
+  color: rgb(255, 255, 255);
+  /* color de fuente hover */
+  font-family: "Titan One", cursive;
+  text-align: center;
+  text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+  color: rgb(247, 212, 236);
+  text-transform: uppercase;
+}
+
+.btnNav::after {
+  content: "";
+  background: #d455aa;
+  /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.btnNav:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+
+.searchbar {
+  margin-left: 29%;
+}
+
+.inputSearch {
+  width: 500px;
+  height: 30px;
+  padding: 5px 5px 5px 10px;
+  background-color: rgba(231, 224, 224, 0.9);
+  color: rgb(61, 56, 56);
+  border: 0px;
+  border-right: 0px;
+  font-size: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.btnSubmit {
+  height: 30px;
+  margin-top: 7px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(218, 213, 213, 0.9);
+  color: rgb(61, 56, 56);
+  border: 0px;
+  font-family: Pompiere, cursive;
+  font-size: 15px;
+  padding: 0 10px 0 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.btnSubmit:hover {
+  background-color: #4b405a;
+  color: rgb(235, 226, 226);
+  font-weight: 700;
+}
+
+.loadingGif{
+  margin: 32% 0 0 140%;
+}
+
+.notFound{
+  height: 350px;
+  margin: 3.8% 0 0 90%;
 }

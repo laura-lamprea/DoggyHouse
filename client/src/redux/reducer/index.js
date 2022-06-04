@@ -14,7 +14,7 @@ const rootReducer = (state = initialState, action) => {
                 dogscopy: action.payload
             }
         case 'GET_DOG':
-            console.log(action.payload)
+            console.log('action.payload', action.payload)
             return {
                 ...state,
                 dog: action.payload

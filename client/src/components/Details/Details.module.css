@@ -1,0 +1,44 @@
+.container {
+    background-color: #ddbaf2;
+    background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    padding-bottom: 200px;
+}
+
+.containerInfo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.imgGameId {
+    width: 600px;
+}
+
+.containerRight {
+    width: 350px;
+    text-align: center;
+    background-color: rgb(227, 240, 240);
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px rgba(3, 32, 51, 0.8);
+    padding: 10px;
+}
+
+.measures {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 0 5% 0 5%;
+}
+
+.measuresItem {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.measuresIco {
+    height: 60px;
+    width: 60px;
+    margin-bottom: -10px;
+}

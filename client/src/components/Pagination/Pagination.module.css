@@ -1,9 +1,9 @@
 .btnPg {
-    background-color: #bdbdd0;
-    color: #767676;
+    background-color: rgba(48, 7, 48, 0.7);
+    color: #968f8f;
     border-radius: none;
     padding: 5px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(109, 103, 103);
     cursor: pointer;
     margin: 1px;
     font-family: 'Times New Roman', Times, serif;

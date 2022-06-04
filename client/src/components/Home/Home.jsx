@@ -4,10 +4,12 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllDogs, getTempers, getDogName, filterTempers, filterCreated, orderAlfa, orderWeight } from '../../redux/actions'
 import Card from '../Card/Card'
-//import Navbar from '../Navbar/Navbar'
-import H from './Home.module.css';
-// import gif from "../../components/gif.gif";
 import Pagination from "../Pagination/Pagination"
+import H from './Home.module.css';
+import logo from "../Images/logo.png";
+import loadingGif from "../Images/gif.gif";
+import notFound from "../Images/404.png";
+
 
 
 export default function HomePage() {
@@ -76,13 +78,12 @@ export default function HomePage() {
 
     return (
         <div className={H.container}>
-            {/* <Navbar /> */}
-            <div className={H.container2}>
-               
-                    <Link to={`/create`}  >
-                        <button className={H.btnAll}>CREATE</button>
-                    </Link>
-                    <button className={H.btnAll} onClick={(e) => { handleClick(e) }}>Reload Dogs</button>
+            <div className={H.navbar}>
+                <Link to={`/`}  >
+                    <img src={logo} className={H.logo} alt="logo" />
+                </Link>
+                <div className={H.navbarButtons}>
+                    <button className={H.btnNav} onClick={(e) => { handleClick(e) }}>Reload</button>
                     <div className={H.filters} >
                         <select id="nameSelect" onChange={(e) => orderAlfaHdl(e)}>
                             <option >Name</option>
@@ -108,14 +109,42 @@ export default function HomePage() {
                             ))}
                         </select>
                     </div>
-                    <div>
-                        <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder=" Search dog..." onChange={(e) => handleInputChange(e)} />
-                        <button className={H.btn} type="submit" onClick={(e) => handleSubmit(e)}>BUSCAR</button>
-                    </div>
-             
+                    <Link to={`/create`}  >
+                        <button className={H.btnNav}>CREATE +</button>
+                    </Link>
+                </div>
             </div>
 
-            <hr></hr>
+            {/* <hr></hr> */}
+            <div className={H.searchbar}>
+                <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder="What breed are you looking for?" onChange={(e) => handleInputChange(e)} />
+                <button className={H.btnSubmit} type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
+            </div>
+
+
+
+            <nav className={H.cards} >
+                {
+                    current.length ?
+                        current.map(d => {
+                            return (  
+                                d.Error ? <img className={H.notFound} src={notFound} alt="Not found" /> :
+                                    <Link to={`/details/${d.id}`} style={{ textDecoration: 'none' }} >
+                                        <Card name={d.name}
+                                            id={d.id}
+                                            image={d.image}
+                                            tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
+                                            weight={d.weight}
+                                            life={d.life}
+                                            height={d.height}
+                                        />
+                                    </Link>
+
+                            );
+                        })
+                        : <img className={H.loadingGif} src={loadingGif} alt="Loading" />
+                }
+            </nav>
             <div className={H.pagination}>
                 <Pagination
                     perPage={perPage}
@@ -123,33 +152,6 @@ export default function HomePage() {
                     page={page}
                 />
             </div>
-
-            <nav className={H.cards} >
-                {
-                    current.length ?
-                        current.map(d => {
-                            return (
-                                // g.Error ? <img className={H.error} src={notFound} alt="Not found" /> :
-                                d.Error ? <h3>Not found</h3> :
-                                    // <div>
-                                        <Link to={`/details/${d.id}`} style={{ textDecoration: 'none' }} >
-                                            <Card name={d.name}
-                                                id={d.id}
-                                                image={d.image}
-                                                tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
-                                                weight={d.weight}
-
-                                                life={d.life}
-                                                height={d.height}
-                                            />
-                                        </Link>
-                                    //</div>
-                            );
-                        })
-                        : <h3>LOADING</h3>
-                    // : <img className={H.loading} src={gif} alt="Not found" />
-                }
-            </nav>
 
         </div>
     )

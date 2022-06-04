@@ -5,13 +5,18 @@ import L from './Landing.module.css';
 export default function LadingPage() {
     return (
         <div className={L.container}>
-          
-                <h2>WELCOME TO GAME+</h2>
-                <h1>ONLINE GAMING SITE</h1>
+            <div className={L.containerInfo}>
+                <h2>Welcome to</h2>
+                <h1>Doggy House</h1>
                 <Link to='/home'>
-                    <button>Let's go!</button>
+                    <button className={L.button}>
+                        Let's see doggies!
+                        <div className={L.button__horizontal} ></div>
+                        <div className={L.button__vertical} ></div>
+                    </button>
                 </Link>
-         
+
+            </div>
         </div>
     )
 };

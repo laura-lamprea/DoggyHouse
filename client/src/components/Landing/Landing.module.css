@@ -1,6 +1,115 @@
-body{
-    background-color: #f2ffd6;
-    background-color: #555161;
-    background-image: url("https://www.transparenttextures.com/patterns/checkered-pattern.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+body {
+    background-image: url(fondo.jpg);
+    /* background-color: rgb(37, 33, 33); */
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: rgba(19, 5, 5);
+    height: 100%;
 }
+
+.container {
+    background: rgba(107, 22, 100, 0.3);
+    width: 55%;
+    /* height: 620px; */
+    height: 100%;
+    clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+    color: rgb(240, 180, 225);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    text-align: center;
+}
+
+.containerInfo {
+    padding: 17% 40% 7% 5%;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre');
+
+h2 {
+    font-family: "Averia Gruesa Libre", cursive;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(241, 172, 221);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+h1{
+    font-family: "Amatic SC", cursive;
+    text-align: center;
+    font-size: 75px;
+    color: rgb(241, 172, 221);
+    background-color: rgba(84, 84, 84, 0.49);
+    text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+}
+
+
+.button {
+    --offset: 10px;
+    --border-size: 2px;
+
+    position: relative;
+    padding: 1.5em 3em;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    background: transparent;
+    color: #ecc5bf;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+    transition: background 0.8s ease;
+  }
+  .button:hover {
+    background: rgba(100, 0, 0, 0.03);
+  }
+  .button__horizontal, .button__vertical {
+    position: absolute;
+    top: var(--horizontal-offset, 0);
+    right: var(--vertical-offset, 0);
+    bottom: var(--horizontal-offset, 0);
+    left: var(--vertical-offset, 0);
+    transition: transform 0.8s ease;
+    will-change: transform;
+  }
+  .button__horizontal::before, .button__vertical::before {
+    content: "";
+    position: absolute;
+    border: inherit;
+  }
+  .button__horizontal {
+    --vertical-offset: calc(var(--offset) * -1);
+    border-top: var(--border-size) solid currentcolor;
+    border-bottom: var(--border-size) solid currentcolor;
+  }
+  .button__horizontal::before {
+    top: calc(var(--vertical-offset) - var(--border-size));
+    bottom: calc(var(--vertical-offset) - var(--border-size));
+    left: calc(var(--vertical-offset) * -1);
+    right: calc(var(--vertical-offset) * -1);
+  }
+  .button:hover .button__horizontal {
+    transform: scaleX(0);
+  }
+  .button__vertical {
+    --horizontal-offset: calc(var(--offset) * -1);
+    border-left: var(--border-size) solid currentcolor;
+    border-right: var(--border-size) solid currentcolor;
+  }
+  .button__vertical::before {
+    top: calc(var(--horizontal-offset) * -1);
+    bottom: calc(var(--horizontal-offset) * -1);
+    left: calc(var(--horizontal-offset) - var(--border-size));
+    right: calc(var(--horizontal-offset) - var(--border-size));
+  }
+  .button:hover .button__vertical {
+    transform: scaleY(0);
+  }
