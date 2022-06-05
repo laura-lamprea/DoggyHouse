@@ -14,7 +14,7 @@ const rootReducer = (state = initialState, action) => {
                 dogscopy: action.payload
             }
         case 'GET_DOG':
-            console.log('action.payload', action.payload)
+            //console.log('action.payload', action.payload)
             return {
                 ...state,
                 dog: action.payload
@@ -51,7 +51,7 @@ const rootReducer = (state = initialState, action) => {
             const dogsOrderAlfa = action.payload === 'asc' ?
                 alldogs.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
                 : alldogs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
-                console.log(dogsOrderAlfa.map(p=>p.name))
+                //console.log(dogsOrderAlfa.map(p=>p.name))
             return {
                 ...state,
                 dogs: dogsOrderAlfa

@@ -22,24 +22,26 @@ export default function DetailPage() {
         dispatch(getDogId(id))
         setTimeout(() => {
             setLoading(false);
-        }, 500);
+        }, 800);
     }, [dispatch])
 
 
 
     return (
-        <div  >
+        <div className={D.containerG} >
             {
                 loading ? <img className={D.loadingGif} src={loadingGif} alt="Loading" /> :
                     <div className={D.container}>
-                        <Link to='/home'>
-                            <button className={D.backBtn}>Back</button>
-                        </Link>
-                        <h1>&hearts; {dog[0].name} &hearts;</h1>
                         <div className={D.containerInfo}>
-                            <img src={dog[0].image} className={D.imgGameId} alt=" " />
+                            <div className={D.measuresItem}>
+                                <h3> {dog[0].name} </h3>
+                                <img src={dog[0].image} className={D.imgGameId} alt=" " />
+                                <Link to='/home'>
+                                    <button className={D.backBtn}> ❮ Back</button>
+                                </Link>
+                            </div>
                             <div className={D.containerRight}>
-                                <h4>Measures</h4>
+                                <h4>MEASURES</h4>
                                 <div className={D.measures}>
                                     <div className={D.measuresItem}>
                                         <img src={wImg} className={D.measuresIco} alt=" " />
@@ -54,16 +56,15 @@ export default function DetailPage() {
                                         <p className={D.titleInfo}>{dog[0].life} </p>
                                     </div>
                                 </div>
-                                <h4>Description</h4>
-                                <p>{dog[0]. name} is a canine breed that has a cheerful {dog[0].tempers} mood. 
-                                Its average weight is between {dog[0].weight} Kg with a height of {dog[0].height} cm. 
-                                It also has an average life between {dog[0].life}. 
-                                This breed is a wonderful family pet, you'll not regret adopting one!</p>
+                                <hr></hr>
+                                <h4>DESCRIPTION</h4>
+                                <p>{dog[0].name} is a canine breed that has a {dog[0].created_db ? dog[0].tempers.map(t => t.name + ', ') : dog[0].tempers} mood.
+                                    Its average weight is between {dog[0].weight} Kg with a height of {dog[0].height} cm.
+                                    It also has an average life between {dog[0].life}.
+                                    This breed is a wonderful family pet, you'll not regret adopting one!</p>
                             </div>
                         </div>
                     </div>
-                // {dog.tempers?.map(g => <a className={D.item} >{g}</a>)} 
-
             }
         </div>
     )

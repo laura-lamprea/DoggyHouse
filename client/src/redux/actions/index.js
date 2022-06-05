@@ -10,7 +10,7 @@ export function getAllDogs() {
 export function getDogId(id) {
     return async function (dispatch) {
         const json = await axios.get(`http://localhost:3001/dogs/${id}`)
-        console.log('json.data',json.data)
+        //console.log('json.data',json.data)
         return dispatch({ type: 'GET_DOG', payload: json.data })
     }
 }

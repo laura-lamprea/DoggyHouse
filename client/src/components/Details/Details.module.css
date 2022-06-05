@@ -1,8 +1,19 @@
-.container {
-    background-color: #ddbaf2;
+.containerG{
+    background-color: #262229;
     background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    margin-top: -60px;
+}
+.container {
     padding-bottom: 200px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Koulen');
+h3{
+    padding-top: 40px;
+    font-family: Koulen, cursive;
+    text-align: left;
+    font-size: 50px;
+    color: rgb(153, 161, 161);
 }
 
 .containerInfo {
@@ -12,15 +23,22 @@
 
 .imgGameId {
     width: 600px;
+    border: 1px solid rgb(197, 188, 188);
 }
 
+@import url('https://fonts.googleapis.com/css?family=Atma');
 .containerRight {
     width: 350px;
     text-align: center;
-    background-color: rgb(227, 240, 240);
+    background-color: rgba(74, 94, 94, 0.7);
     border-radius: 10px;
     box-shadow: 3px 5px 5px rgba(3, 32, 51, 0.8);
-    padding: 10px;
+    box-shadow: 11px 13px 17px rgba(99, 147, 179, 0.8);
+    padding: 2px 15px 10px 15px;
+    font-family: Atma, cursive;
+    border: 1px solid rgb(197, 188, 188);
+    margin-top: 10%;
+    color: rgb(204, 216, 216);
 }
 
 .measures {
@@ -28,6 +46,13 @@
     justify-content: space-around;
     text-align: center;
     margin: 0 5% 0 5%;
+    border: 1px solid rgb(189, 175, 175);
+    padding-top: 15px;
+    background-color: rgba(96, 133, 133, 0.7);
+    border-radius: 20px;
+    margin-top: -12px;
+    margin-bottom: 20px;
+    color: rgb(245, 228, 228);
 }
 
 .measuresItem {
@@ -39,6 +64,73 @@
 
 .measuresIco {
     height: 60px;
-    width: 60px;
     margin-bottom: -10px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Crushed');
+
+h4 {
+    font-family: Crushed, cursive;
+    text-align: center;
+    color: rgb(233, 210, 227);
+    font-size: 20px;
+}
+
+.loadingGif{
+    margin-top: 20%;
+    padding-left: 35%;
+    padding-bottom: 20%;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Codystar');
+.backBtn {
+  background-color: transparent;
+  color: rgb(250, 249, 249);
+  border: 1px solid rgb(197, 151, 159);
+  padding: 6px 50px 6px 50px;
+  border-radius: 10px;
+  /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-family: Codystar, cursive;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px
+}
+
+@import url('https://fonts.googleapis.com/css?family=Titan+One');
+
+.backBtn:hover {
+  color: rgb(255, 255, 255);
+  /* color de fuente hover */
+  font-family: "Titan One", cursive;
+  text-align: center;
+  text-shadow: rgb(0, 0, 0) 2px 2px 2px;
+  color: rgb(247, 212, 236);
+  text-transform: uppercase;
+}
+
+.backBtn::after {
+  content: "";
+  background: #d455aa;
+  /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.backBtn:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
 }

@@ -70,7 +70,7 @@ export default function CreateDog() {
         input.weight = `${input.weightMin} - ${input.weightMax} `
         input.height = `${input.heightMin} - ${input.heightMax} `
 
-        console.log('input', input)
+        //console.log('input', input)
 
 
         if (Object.entries(errors).length === 0) {

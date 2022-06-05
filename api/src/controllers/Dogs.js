@@ -63,7 +63,7 @@ const getById = async (req, res) => {
   const allDogs = [...dataDb, ...dataApi]
   if (id) {
     const dogId = await allDogs.filter(p => p.id == id)
-    console.log(dogId)
+    //console.log(dogId)
     if (dogId.length) {
       return res.json(dogId)
     } else {
