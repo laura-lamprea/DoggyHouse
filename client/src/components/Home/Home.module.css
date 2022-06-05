@@ -33,10 +33,14 @@
 select {
   background-color: transparent;
   font-family: Pompiere, cursive;
-  font-size: 21px;
+  font-size: 19px;
   color: rgb(248, 191, 230);
   background-color: rgb(84, 84, 84, 0.8);
   padding: 0 10px 0 0px;
+}
+option{
+  font-size: 17px;
+  background-color: rgb(56, 52, 52);
 }
 
 .pagination {

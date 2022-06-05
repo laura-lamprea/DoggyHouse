@@ -1,29 +1,44 @@
 .container {
-    background-color: red;
-    height: 500px;
+    background-color: #755968;
+    background-image: url("https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    height: 600px;
     display: flex;
     justify-content: space-around;
     padding: 20px;
 }
 
 .containerLeft {
-    background-color: blue;
-    width: 400px;
+    background-color: rgba(79, 79, 116, 0.5);
+    width: 500px;
+    align-items: center;
     text-align: center;
+    padding-bottom: 30px;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Atma');
 .containerRight {
-    width: 600px;
-    background-color: pink;
-    padding: 20px;
+    width: 430px;
+    background-color: rgba(105, 34, 78, 0.7);
+    padding: 30px 30px 20px 30px;
+    border: 3px solid rgb(105, 91, 93);
+    border-radius: 40px;
+    color: rgb(223, 219, 213);
+    margin-top: 40px;
+    font-family: Atma, cursive;
 }
 
 .imgNew {
-    height: 150px;
+    width: 450px;
+    height: 300px;
 }
 
 .inputForm {
-    margin: 4px 0 4px 0;
+    margin: 0 0 10px 0;
+    border-radius: 5px;
+    height: 20px;
+    border: 0px ;
+    padding-left: 6px;
 }
 
 .formItem {
@@ -31,13 +46,39 @@
     flex-direction: column;
 }
 
-.formItem2{
+.formItem2 {
     display: flex;
-    background-color: red;
     width: 100%;
     justify-content: space-around;
 }
+.formItem3 {
+    display: flex;
+    width: 100%;
+}
 
-.inputRange{
-width: 100px;
+.inputRange {
+    width: 180px;
+    margin: 0 0 10px 0;
+    border-radius: 5px;
+    height: 20px;
+    border: 0px solid rgb(105, 91, 93);
+    padding-left: 6px;
+}
+
+.btnx{
+    background-color: transparent;
+    border: 0px ;
+    color: rgb(238, 122, 167);
+    margin-left: 5px;
+}
+
+.danger{
+    color: rgb(255, 167, 167);
+    color: rgb(255, 202, 202);
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 3px;
+    background-color: rgba(248, 3, 44, 0.6);
+    text-align: center;
+    border-radius: 3px;
 }

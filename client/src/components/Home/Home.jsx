@@ -86,7 +86,7 @@ export default function HomePage() {
                     <button className={H.btnNav} onClick={(e) => { handleClick(e) }}>Reload</button>
                     <div className={H.filters} >
                         <select id="nameSelect" onChange={(e) => orderAlfaHdl(e)}>
-                            <option >Name</option>
+                            <option >Breed</option>
                             <option value='asc'>A-Z</option>
                             <option value='des'>Z-A</option>
                         </select>
