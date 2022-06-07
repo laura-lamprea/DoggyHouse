@@ -38,13 +38,6 @@ const rootReducer = (state = initialState, action) => {
                 tempers: action.payload
             }
 
-        // case 'DELETE_DOG':
-        //     console.log(action.payload)
-        //     return {
-        //         ...state,
-        //         dog: action.payload
-        //     }
-
         case 'ORDER_ALFA':
             const alldogs = state.dogs
 
@@ -71,8 +64,8 @@ const rootReducer = (state = initialState, action) => {
                     if (parseFloat(a.weight.replace('NaN', 0).split(' - ').join('.')) < parseFloat(b.weight.replace('NaN', 0).split(' - ').join('.'))) return 1;
                     else return 0;
                 })
-            dogOrderWeight.map((w) => w.weight.includes('NaN') ? w.weight = 'Undefine': w.weight )
-            console.log(dogOrderWeight.map(weight => weight.weight ))
+            dogOrderWeight.map((w) => w.weight.includes('NaN') ? w.weight = 'Undefine' : w.weight)
+            console.log(dogOrderWeight.map(weight => weight.weight))
 
             // console.log(dogsAll.map(weight => weight.weight))
             // const dogOrderWeight = action.payload === 'asc' ?
@@ -102,11 +95,23 @@ const rootReducer = (state = initialState, action) => {
                 filteredByTempers = allTempers
             } else {
                 let filteredTemperApi = allTempers.filter((e) => e.tempers?.includes(action.payload))
-                filteredByTempers = [...filteredTemperApi]
+                let dogsDB = allTempers.filter((e) => e.created_db)
+                let filteredTemperDB = []
+                for (const perro of dogsDB) {
+                    for (const tem of perro['tempers']) {
+                        if(tem.name == action.payload )  filteredTemperDB.push(perro)
+                    }
+                }
+            
+                //     let filteredTemperDB = allTempers.filter((e) => e.created_db)
+                //    // let otro = filteredTemperDB.map(tem=>(tem.tempers?.map(p=>p.name?.includes(action.payload) )))
+                //     let otro = filteredTemperDB.filter(tem=>(tem.tempers?.map(p=>p.name?.includes(action.payload) )))
+
+                filteredByTempers = [...filteredTemperDB, ...filteredTemperApi] 
             }
             return {
                 ...state,
-                dogs: filteredByTempers.length ? filteredByTempers : [{ Error: 'No videodogs found' }]
+                dogs: filteredByTempers.length ? filteredByTempers : [{ Error: 'No dogs found' }]
             }
         case 'CLEAN_DETAILS':
             return {

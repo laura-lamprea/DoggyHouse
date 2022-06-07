@@ -53,10 +53,6 @@ export default function HomePage() {
     function handleClick(e) {
         e.preventDefault();
         window.location.reload()
-        // document.getElementById("nameSelect").getElementsByTagName('option')[0].selected = 'selected'
-        // document.getElementById("weightSelect").getElementsByTagName('option')[0].selected = 'selected'
-        // document.getElementById("originSelect").getElementsByTagName('option')[0].selected = 'selected'
-        // document.getElementById("temper").getElementsByTagName('option')[0].selected = 'selected'
     }
 
     function orderAlfaHdl(e) {
