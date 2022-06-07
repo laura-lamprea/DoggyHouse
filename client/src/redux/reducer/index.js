@@ -47,11 +47,11 @@ const rootReducer = (state = initialState, action) => {
 
         case 'ORDER_ALFA':
             const alldogs = state.dogs
-            
+
             const dogsOrderAlfa = action.payload === 'asc' ?
                 alldogs.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0))
                 : alldogs.sort((a, b) => (a.name > b.name ? -1 : a.name < b.name ? 1 : 0))
-                //console.log(dogsOrderAlfa.map(p=>p.name))
+            //console.log(dogsOrderAlfa.map(p=>p.name))
             return {
                 ...state,
                 dogs: dogsOrderAlfa
@@ -60,6 +60,12 @@ const rootReducer = (state = initialState, action) => {
 
         case 'ORDER_WEIGHT':
             const dogsAll = state.dogs
+            for (let i = 0; i < dogsAll.length; i++) {
+                if (dogsAll[i].weight == "5") dogsAll[i].weight = "5 - 5"
+                if (dogsAll[i].weight == "6") dogsAll[i].weight = "6 - 6"
+                if (dogsAll[i].weight == "13") dogsAll[i].weight = "13 - 13"
+                if (dogsAll[i].weight == "14") dogsAll[i].weight = "14 - 14"
+            }
             const dogOrderWeight = action.payload === 'asc' ?
                 dogsAll.sort((a, b) => {
                     if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) > parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return 1;
@@ -71,6 +77,8 @@ const rootReducer = (state = initialState, action) => {
                     if (parseInt(a.weight.replace('NaN', 0).split(' - ').join('')) < parseInt(b.weight.replace('NaN', 0).split(' - ').join(''))) return 1;
                     else return 0;
                 })
+
+            // console.log(dogOrderWeight.map(weight => weight.weight))
 
             // console.log(dogsAll.map(weight => weight.weight))
             // const dogOrderWeight = action.payload === 'asc' ?

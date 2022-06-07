@@ -43,8 +43,8 @@ export default function CreateDog() {
         if (input.name && input.image &&
             input.lifeMin && input.lifeMax &&
             input.weightMin && input.weightMax &&
-            input.heightMin && input.heightMax
-            // input.platforms.length &&
+            input.heightMin
+
         ) {
             setBotonActivo(true)
         } else {
@@ -53,29 +53,36 @@ export default function CreateDog() {
     }
 
     const handleSelectTemper = (e) => {
-        if(input.tempers.length<5){
+        if (input.tempers.length < 5) {
             setInput({
                 ...input,
                 tempers: [...new Set([...input.tempers, e.target.value])]
             });
         }
-        
+    }
+
+    const handleCleanForm = (e) => {
+        setInput({
+            ...input,
+            name: '',
+            image: '',
+            weightMin: '',
+            weightMax: '',
+            heightMin: '',
+            heightMax: '',
+            lifeMin: '',
+            lifeMax: '',
+            tempers: [],
+        });
+        setBotonActivo(false)
+        document.getElementById("tempers").getElementsByTagName('option')[0].selected = 'selected'
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-
-        // dispatch(createDog(input))
-        // alert("DOG CREATED SUCCESSFULLY!!")
-
         input.life = `${input.lifeMin} - ${input.lifeMax} years`
         input.weight = `${input.weightMin} - ${input.weightMax} `
         input.height = `${input.heightMin} - ${input.heightMax} `
-
-        //console.log('input', input)
-
-
         if (Object.entries(errors).length === 0) {
             dispatch(createDog(input))
             alert("DOG CREATED SUCCESSFULLY!!")
@@ -87,7 +94,8 @@ export default function CreateDog() {
                 weightMax: '',
                 heightMin: '',
                 heightMax: '',
-                life: '',
+                lifeMin: '',
+                lifeMax: '',
                 tempers: [],
             });
             setBotonActivo(false)
@@ -110,7 +118,7 @@ export default function CreateDog() {
         <div className={C.container}>
             <div>
                 <Link to='/home'>
-                    <button className={C.btnBack}>&laquo; Back</button>
+                    <button className={C.backBtn}>&laquo; Back</button>
                 </Link>
                 <div className={C.containerLeft} >
                     <h1 className={C.welcome}>¡New Breed!</h1>
@@ -136,14 +144,15 @@ export default function CreateDog() {
                     <div className={C.formItem}>
                         <label>Life </label>
                         <div className={C.formItem2}>
-                        <div className={C.formItem}>
-                        <input className={C.inputRange} type="number" value={input.lifeMin} name="lifeMin" min={0} max={21} placeholder="Min" onChange={handleInputChange} />
-                            {botonActivo && errors.lifeMin && (<h6 className={C.danger}> {errors.lifeMin} </h6>)}
-                        </div>
-                            
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.lifeMin} name="lifeMin" min={1} max={21} placeholder="Min" onChange={handleInputChange} />
+                                {botonActivo && errors.lifeMin && (<h6 className={C.danger}> {errors.lifeMin} </h6>)}
+                            </div>
                             <label> - </label>
-                            <input className={C.inputRange} type="number" value={input.lifeMax} name="lifeMax" min={1} max={22} placeholder="Max" onChange={handleInputChange} />
-                            {botonActivo && errors.lifeMax && (<h6 className={C.danger}>{errors.lifeMax}</h6>)}
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.lifeMax} name="lifeMax" min={2} max={22} placeholder="Max" onChange={handleInputChange} />
+                                {botonActivo && errors.lifeMax && (<h6 className={C.danger}>{errors.lifeMax}</h6>)}
+                            </div>
                             <label> years </label>
                         </div>
                     </div>
@@ -151,11 +160,15 @@ export default function CreateDog() {
                     <div className={C.formItem}>
                         <label>Weight </label>
                         <div className={C.formItem2}>
-                            <input className={C.inputRange} type="number" value={input.weightMin} name="weightMin" min={1} max={99} placeholder="Min" onChange={handleInputChange} />
-                            {botonActivo && errors.weightMin && (<h6 className={C.danger}> {errors.weightMin} </h6>)}
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.weightMin} name="weightMin" min={1} max={99} placeholder="Min" onChange={handleInputChange} />
+                                {botonActivo && errors.weightMin && (<h6 className={C.danger}> {errors.weightMin} </h6>)}
+                            </div>
                             <label> - </label>
-                            <input className={C.inputRange} type="number" value={input.weightMax} name="weightMax" min={2} max={100} placeholder="Max" onChange={handleInputChange} />
-                            {botonActivo && errors.weight && (<h6 className={C.danger}> {errors.weight}</h6>)}
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.weightMax} name="weightMax" min={2} max={100} placeholder="Max" onChange={handleInputChange} />
+                                {botonActivo && errors.weight && (<h6 className={C.danger}> {errors.weight}</h6>)}
+                            </div>
                             <label> Kg </label>
                         </div>
                     </div>
@@ -163,15 +176,18 @@ export default function CreateDog() {
                     <div className={C.formItem}>
                         <label>Height </label>
                         <div className={C.formItem2}>
-                            <input className={C.inputRange} type="number" value={input.heightMin} name="heightMin" min={1} max={99} placeholder="min" onChange={handleInputChange} />
-                            {botonActivo && errors.heightMin && (<h6 className={C.danger}> {errors.heightMin} </h6>)}
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.heightMin} name="heightMin" min={1} max={99} placeholder="min" onChange={handleInputChange} />
+                                {botonActivo && errors.heightMin && (<h6 className={C.danger}> {errors.heightMin} </h6>)}
+                            </div>
                             <label> - </label>
-                            <input className={C.inputRange} type="number" value={input.heightMax} name="heightMax" min={2} max={100} placeholder="max" onChange={handleInputChange} />
-                            {botonActivo && errors.heightMax && (<h6 className={C.danger}> {errors.heightMax}</h6>)}
+                            <div className={C.formItem}>
+                                <input className={C.inputRange} type="number" value={input.heightMax} name="heightMax" min={2} max={100} placeholder="max" onChange={handleInputChange} />
+                                {botonActivo && errors.heightMax && (<h6 className={C.danger}> {errors.heightMax}</h6>)}
+                            </div>
                             <label> cm </label>
                         </div>
                     </div>
-
 
                     <div className={C.formItem3}>
                         <div className={C.formItem}>
@@ -186,18 +202,21 @@ export default function CreateDog() {
                         <div className={C.formItem}>
                             {input.tempers?.map(selec =>
                                 <span>
-                                    <button className={C.btnx} onClick={(e) => handleDeleteTemper(e, selec)}>X</button> {selec} 
+                                    <button className={C.btnx} onClick={(e) => handleDeleteTemper(e, selec)}>X</button> {selec}
                                 </span>
                             )}
                             {botonActivo && errors.tempers && (<h6 className={C.danger}> {errors.tempers}</h6>)}
                         </div>
-
                     </div>
+                    {/* <button type="submit" disabled={!botonActivo} className={C.btnCheck} id="btn" > &#10003;</button> */}
+                    <center>
+                        <button type="submit" disabled={!botonActivo} className={C.btnCheck} id="btn" >CREATE</button>
+                    </center>
 
-                    <div className={C.btnsub} >
-                        <button type="submit" disabled={!botonActivo} className={C.btnAll} id="btn" >CREATE DOG</button>
-                    </div>
                 </form>
+                <center>
+                    <button className={C.btnDelete} onClick={(e) => handleCleanForm(e)}  >Clean form</button>
+                </center>
 
             </div>
         </div >
@@ -214,9 +233,10 @@ export function validate(input) {
         errors.name = 'The first letter must be capitalized';
     } else if (/[0-9]/.test(input.name)) {
         errors.name = 'Not numbers';
-    } else if (/\s/.test(input.name)) {
-        errors.name = 'No Spaces';
     }
+    // else if (/\s/.test(input.name)) {
+    //     errors.name = 'No Spaces';
+    // }
 
     if (!input.image) {
         errors.image = 'Url is required';
@@ -300,7 +320,7 @@ export function validate(input) {
         errors.heightMax = 'Only numbers';
     }
 
-    // if (!input.tempers.length) {
+    // if (input.tempers.length<1) {
     //     errors.tempers = 'Tempers is required!';
     // }
 

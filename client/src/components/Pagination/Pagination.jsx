@@ -13,7 +13,7 @@ export default function Pagination ({page, allDogs, perPage}) {
                 { numPages &&
                 numPages.map(num => 
                     (
-                    <button className={P.btnPg} onClick={() => page(num)} >{num}</button>
+                    <button key={num}className={P.btnPg} onClick={() => page(num)} >{num}</button>
                     )
                 )}
         </nav>

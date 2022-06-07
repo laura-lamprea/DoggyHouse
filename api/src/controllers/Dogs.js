@@ -69,8 +69,6 @@ const getById = async (req, res) => {
     } else {
       return res.status(404).send('ID does not exist')
     }
-
-   
   }
 };
 

@@ -105,7 +105,7 @@ export default function HomePage() {
                             <option >Temperaments</option>
                             <option value='all'>All</option>
                             {tempers.map(g => (
-                                <option value={g.name} >{g.name}</option>
+                                <option key={g.name} value={g.name} >{g.name}</option>
                             ))}
                         </select>
                     </div>
@@ -127,18 +127,20 @@ export default function HomePage() {
                 {
                     current.length ?
                         current.map(d => {
-                            return (  
+                            return (
                                 d.Error ? <img className={H.notFound} src={notFound} alt="Not found" /> :
-                                    <Link to={`/details/${d.id}`} style={{ textDecoration: 'none' }} >
-                                        <Card name={d.name}
-                                            id={d.id}
-                                            image={d.image}
-                                            tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
-                                            weight={d.weight}
-                                            life={d.life}
-                                            height={d.height}
-                                        />
-                                    </Link>
+                                    <div key={d.id}>
+                                        <Link to={`/details/${d.id}`} style={{ textDecoration: 'none' }} >
+                                            <Card name={d.name}
+                                                id={d.id}
+                                                image={d.image}
+                                                tempers={d.created_db ? d.tempers.map(tem => ` ${tem.name}, `) : d.tempers}
+                                                weight={d.weight}
+                                                life={d.life}
+                                                height={d.height}
+                                            />
+                                        </Link>
+                                    </div>
 
                             );
                         })
