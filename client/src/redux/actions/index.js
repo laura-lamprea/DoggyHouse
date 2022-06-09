@@ -36,14 +36,6 @@ export function getTempers() {
     }
 }
 
-
-// export function deleteGame(id) {
-//     return async function (dispatch) {
-//         const json = await axios.delete(`http://localhost:3001/dogs/${id}`)
-//         return dispatch({ type: 'DELETE_DOG', payload: json.data })
-//     }
-// }
-
 export function filterTempers(payload) {
     return {
         type: 'FILTER_BY_TEMPER',

@@ -43,17 +43,6 @@ option{
   background-color: rgb(56, 52, 52);
 }
 
-.pagination {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

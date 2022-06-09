@@ -14,6 +14,15 @@
     color: #060609;
   }
   
-  .btnPg::after {
+  /* .btnPg::after {
     background-color: red
+  } */
+
+  .pagination {
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    height: 30px;
+    margin:20px 0 20px 0%;
+    padding-left: 38%;
   }

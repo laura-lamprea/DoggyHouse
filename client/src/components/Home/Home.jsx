@@ -17,32 +17,39 @@ export default function HomePage() {
     const allDogs = useSelector(state => state.dogs)
     const tempers = useSelector(state => state.tempers)
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);  
     const [perPage, setPerPage] = useState(8)
-    const indexLast = currentPage * perPage
-    const indexFirst = indexLast - perPage
-    const current = allDogs.slice(indexFirst, indexLast)
+    const indexLast = currentPage * perPage 
+    const indexFirst = indexLast - perPage  
+    const current = allDogs.slice(indexFirst, indexLast) 
 
-    const page = (numPage) => {
-        setCurrentPage(numPage)
-    }
+    // console.log('current', current);  //todos los  8 perros
+    // console.log('indexLast', indexLast);  //8  16
+    // console.log('indexFirst', indexFirst); //0   8
+    // console.log('currentPage', currentPage); //el numero de la pagina
 
     const [order, setOrder] = useState('')
     const [name, setName] = useState('')
+    const [searching, setSearching] = useState(false);
+
 
     useEffect(() => {
         dispatch(getAllDogs())
         dispatch(getTempers())
     }, [dispatch])
 
+    const page = (numPage) => {
+        setCurrentPage(numPage)
+    }
 
-    const [searching, setSearching] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
+        setCurrentPage(1)
         dispatch(getDogName(name))
         setSearching(true)
         setName('')
+
     }
 
     const handleInputChange = (e) => {
@@ -59,17 +66,21 @@ export default function HomePage() {
         e.preventDefault();
         dispatch(orderAlfa(e.target.value));
         setOrder(e.target.value)
+        setCurrentPage(1)
     }
     function orderWeightHdl(e) {
         e.preventDefault();
         dispatch(orderWeight(e.target.value));
         setOrder(e.target.value)
+        setCurrentPage(1)
     }
     function filterTemperHdl(e) {
         dispatch(filterTempers(e.target.value));
+        setCurrentPage(1)
     }
     function filterCreatedHdl(e) {
         dispatch(filterCreated(e.target.value));
+        setCurrentPage(1)
     }
 
     return (
@@ -111,7 +122,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            {/* <hr></hr> */}
+     
             <div className={H.searchbar}>
                 <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder="What breed are you looking for?" onChange={(e) => handleInputChange(e)} />
                 <button className={H.btnSubmit} type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
@@ -143,13 +154,8 @@ export default function HomePage() {
                         : <img className={H.loadingGif} src={loadingGif} alt="Loading" />
                 }
             </nav>
-            <div className={H.pagination}>
-                <Pagination
-                    perPage={perPage}
-                    allDogs={allDogs.length}
-                    page={page}
-                />
-            </div>
+
+            <Pagination  perPage={perPage} allDogs={allDogs.length} page={page} current={currentPage} />
 
         </div>
     )
