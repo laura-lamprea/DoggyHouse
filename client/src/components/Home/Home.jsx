@@ -17,11 +17,11 @@ export default function HomePage() {
     const allDogs = useSelector(state => state.dogs)
     const tempers = useSelector(state => state.tempers)
 
-    const [currentPage, setCurrentPage] = useState(1);  
+    const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(8)
-    const indexLast = currentPage * perPage 
-    const indexFirst = indexLast - perPage  
-    const current = allDogs.slice(indexFirst, indexLast) 
+    const indexLast = currentPage * perPage
+    const indexFirst = indexLast - perPage
+    const current = allDogs.slice(indexFirst, indexLast)
 
     // console.log('current', current);  //todos los  8 perros
     // console.log('indexLast', indexLast);  //8  16
@@ -42,14 +42,12 @@ export default function HomePage() {
         setCurrentPage(numPage)
     }
 
-
     function handleSubmit(e) {
         e.preventDefault();
         setCurrentPage(1)
         dispatch(getDogName(name))
         setSearching(true)
         setName('')
-
     }
 
     const handleInputChange = (e) => {
@@ -68,12 +66,14 @@ export default function HomePage() {
         setOrder(e.target.value)
         setCurrentPage(1)
     }
+
     function orderWeightHdl(e) {
         e.preventDefault();
         dispatch(orderWeight(e.target.value));
         setOrder(e.target.value)
         setCurrentPage(1)
     }
+
     function filterTemperHdl(e) {
         dispatch(filterTempers(e.target.value));
         setCurrentPage(1)
@@ -122,7 +122,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-     
+
             <div className={H.searchbar}>
                 <input className={H.inputSearch} value={name} type="search" required name="buscar" autoComplete="off" placeholder="What breed are you looking for?" onChange={(e) => handleInputChange(e)} />
                 <button className={H.btnSubmit} type="submit" onClick={(e) => handleSubmit(e)}>GO!</button>
@@ -155,7 +155,9 @@ export default function HomePage() {
                 }
             </nav>
 
-            <Pagination  perPage={perPage} allDogs={allDogs.length} page={page} current={currentPage} />
+            <div className={H.pagination}>
+                <Pagination perPage={perPage} allDogs={allDogs.length} page={page} current={currentPage} />
+            </div>
 
         </div>
     )
