@@ -96,5 +96,17 @@ A server was developed in Node/Express with the following routes:
   - Receive the data collected from the controlled form of the dog breed creation route by body
   - Create a dog breed in the database
 
+#### Images
+  <p align="center">
+     <img height="330" src='./Home.png' </img>
+  </p>
+  <p align="center">
+     <img height="350" src='./Details.png' </img>
+  </p>
+  <p align="center">
+     <img height="350" src='./Create.png' </img>
+  </p>
+
+
 
 
